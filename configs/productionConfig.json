@@ -1,0 +1,6 @@
+{
+    "SECRET_KEY": "+wrlaicsy+no3t#wc0j^*z=vgeub@t$*hpd^v4w@d!+azwhv7e",
+    "SQLALCHEMY_DATABASE_URI" : "postgresql+psycopg2://postgres:HtrElK6Gq2Ay1Vgi@66.228.62.105:5432/TeeBox",
+    "DBUSER" : "postgres",
+    "DBPASS" : "HtrElK6Gq2Ay1Vgi"
+}
