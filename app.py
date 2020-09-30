@@ -1,6 +1,5 @@
-from Wavelength import app
-from flask_socketio.server import SocketIOServer
+from Wavelength import socketio, app
 
 if __name__ == "__main__":
-   ws = SocketIOServer(('0.0.0.0', 8000), app, resource="socket.io", policy_server=False)
-   ws.serve_forever()
+   app.run()
+   # socketio.run(app)
