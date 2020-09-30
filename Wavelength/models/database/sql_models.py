@@ -50,8 +50,7 @@ class Room(db.Model):
     is_playing = db.Column(db.Boolean(), index=True, nullable=False, default=False)
 
 
-    def __init__(self, user, tour, handicap_differnetial):
-        token = uuid4().hex[0:6]
+    def __init__(self): 
         while (self.query.filter_by(code=token).all() != []):
             token = uuid4().hex
         self.token = token
@@ -59,4 +58,5 @@ class Room(db.Model):
         while (self.query.filter_by(code=code).all() != []):
             code = uuid4().hex
         self.code = code
+
 
