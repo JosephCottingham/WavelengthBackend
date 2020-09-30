@@ -50,8 +50,9 @@ class Room(db.Model):
     is_playing = db.Column(db.Boolean(), index=True, nullable=False, default=False)
 
 
-    def __init__(self): 
-        while (self.query.filter_by(code=token).all() != []):
+    def __init__(self):
+        token = uuid4().hex[0:6]
+        while (self.query.filter_by(token=token).all() != []):
             token = uuid4().hex
         self.token = token
         code = uuid4().hex
