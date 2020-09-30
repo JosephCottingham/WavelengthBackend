@@ -34,8 +34,10 @@ from .models.database.sql_models import Message, Room
 #### BLUEPRINT CONFIGS ####
 #########################
 from Wavelength.home_views import homeBlueprint
+from Wavelength.api import apiBlueprint
 
 app.register_blueprint(homeBlueprint)
+app.register_blueprint(apiBlueprint)
 
 
 ###########################
