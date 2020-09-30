@@ -24,12 +24,18 @@ db = SQLAlchemy(app)
 Migrate(app, db)
 
 
-
 from .models.database.sql_models import Message, Room
 
 # db.create_all()
 # db.session.commit()
 
+
+###########################
+#### BLUEPRINT CONFIGS ####
+#########################
+from Wavelength.home_views import homeBlueprint
+
+app.register_blueprint(homeBlueprint)
 
 
 ###########################
@@ -41,7 +47,6 @@ from flask_admin import Admin
 admin = Admin(app)
 
 from flask_admin.contrib.sqla import ModelView
-
 
 admin.add_view(ModelView(Message, db.session))
 admin.add_view(ModelView(Room, db.session))
