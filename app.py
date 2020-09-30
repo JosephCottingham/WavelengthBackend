@@ -1,4 +1,6 @@
-from Wavelength import socketio, app
+from Wavelength import app
+from socketio.server import SocketIOServer
 
 if __name__ == "__main__":
-   socketio.run(app)
+   ws = SocketIOServer(('0.0.0.0', 8000), app, resource="socket.io", policy_server=False)
+   ws.serve_forever()
