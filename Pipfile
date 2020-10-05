@@ -25,6 +25,7 @@ six = "*"
 sqlalchemy = "*"
 werkzeug = "*"
 wtforms = "*"
+sockets = "*"
 
 [requires]
 python_version = "3.8"

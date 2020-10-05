@@ -11,13 +11,15 @@ from flask_socketio import join_room, leave_room, send
 def connection():
     print('connected')
 
+#will implement later for now use join_room from bottom
 @socketio.on('join')
 def on_join(data):
     print('received join request')
+    room = data['room']
     photo_url = data['photo_url']
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
-        join_room(data['room'])
+        join_room(room)
         payload = {
             'message' : {
                 'sent_datetime' : str(datetime.now()), 
@@ -245,3 +247,28 @@ def on_sync(data):
             }
         }
     send(json.dump(payload), room=data['room'])
+
+
+@socketio.on('join_room')
+def join_room_and_notify(data):
+    room = data['room']
+    join_room(room)
+
+    socketio.emit('connection_message', {
+        'username': data['username'],
+        'photo_url': data['photo_url'],
+    }, room)
+
+@socketio.on('chat_message')
+def handle_message(data):
+    socketio.emit('chat_message', {
+        'username': data['username'],
+        'photo_url': data['photo_url'],
+        'message': data['message']
+    })
+
+@socketio.on('update_link')
+def update_link(data):
+    socketio.emit('update_link', {
+        'link': data['link']
+    })
