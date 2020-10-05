@@ -6,8 +6,13 @@ from .models.database.sql_models import Message, Room
 
 from flask_socketio import join_room, leave_room, send
 
+@socketio.on('connect')
+def connection():
+    print('connected')
+
 @socketio.on('join')
 def on_join(data):
+    print('received join request')
     photo_url = data['photo_url']
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
