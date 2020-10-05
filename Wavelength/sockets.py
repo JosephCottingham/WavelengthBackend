@@ -77,7 +77,7 @@ def on_message(data):
     send(json.dump(payload), room=room)
 
 @socketio.on('video_url_change')
-def on_message(data):
+def on_video_url_change(data):
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
         my_room.time_stamp = 0
@@ -107,7 +107,7 @@ def on_message(data):
     send(json.dump(payload), room=data['room'])
 
 @socketio.on('video_loc_change')
-def on_message(data):
+def on_video_loc_change(data):
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
         my_room.time_stamp = data['video_time']
@@ -136,7 +136,7 @@ def on_message(data):
     
         
 @socketio.on('video_pause')
-def on_message(data):
+def on_video_pause(data):
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
         if my_room.is_playing:
@@ -173,7 +173,7 @@ def on_message(data):
     send(json.dump(payload), room=data['room'])
 
 @socketio.on('video_play')
-def on_message(data):
+def on_video_play(data):
     my_room = Room.query.filter_by(token=data['room'], finalized=True).first()
     if my_room != None:
         if not my_room.is_playing:
