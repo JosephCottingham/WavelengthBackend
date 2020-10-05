@@ -57,4 +57,4 @@ admin.add_view(ModelView(Room, db.session))
 #### SOCKETIO CONFIGS ####
 #########################
 
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
