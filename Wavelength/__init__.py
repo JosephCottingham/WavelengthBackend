@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_socketio import SocketIO, send
 
-from sockets import *
+import Wavelength.sockets
 from Wavelength.config import Config
 
 with open(os.path.join(os.getcwd(), 'AppSettings.Config')) as config_file:
