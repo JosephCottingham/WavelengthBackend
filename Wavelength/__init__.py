@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_socketio import SocketIO, send
 
-import Wavelength.sockets
 from Wavelength.config import Config
 
 with open(os.path.join(os.getcwd(), 'AppSettings.Config')) as config_file:
@@ -59,3 +58,4 @@ admin.add_view(ModelView(Room, db.session))
 #########################
 
 socketio = SocketIO(app, cors_allowed_origins="*")
+import Wavelength.sockets

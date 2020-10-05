@@ -6,6 +6,7 @@ from .models.database.sql_models import Message, Room
 
 from flask_socketio import join_room, leave_room, send
 
+
 @socketio.on('connect')
 def connection():
     print('connected')
