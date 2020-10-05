@@ -62,7 +62,6 @@ def on_message(data):
     room = data['room']
     photo_url = data['photo_url']
     msg = data['msg']
-    leave_room(room)
     payload = {
         'data' : {
             'sent_datetime' : str(datetime.now()),
