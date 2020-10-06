@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_socketio import SocketIO, send
 
+from flask_cors import CORS, cross_origin
 from Wavelength.config import Config
 
 with open(os.path.join(os.getcwd(), 'AppSettings.Config')) as config_file:
@@ -22,7 +23,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 Migrate(app, db)
-
+cors = CORS(app)
 
 from .models.database.sql_models import Message, Room
 
